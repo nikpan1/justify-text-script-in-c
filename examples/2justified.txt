@@ -1,0 +1,75 @@
+Application of the  NI  PCI-6014  acquisition card
+the  measuring   tool    of    a   simple  virtual
+The exercise uses two input  channels of the card,
+and ACH8,  and  the  DAC0OUT  output  channel. Two
+should be  connected  to  the  input  channels, an
+should be connected  to  the  output  of the card.
+of  the  PCI-6014  card   using  LabView  wizards:
+VIs The goal of this  part  of  the exercise is to
+a simple program  that  allows  for: collection of
+from the  two  mentioned  input  channels  of  the
+card,  setting  the    excitation   threshold  for
+data, spectral analysis  of  accumulated data, and
+of a selected  signal  and  outputting  it through
+PCI-6014  card.  The  following  LabView  elements
+be  required:  -  While  Loop  with  a  button  to
+its operation, providing  continuous  operation of
+program;  -  DAQ   Assistant   Express  VI  wizard
+data accumulated on  two  card  input  channels; -
+Assistant  Express  VI   wizard  transmitting  the
+signal to  the  output  of  the  card;  - Simulate
+Express VI wizard that  generates  one of the five
+types of signal;  -  Trigger  and  Gate Express VI
+that allows you to  set  the threshold excitation,
+which  the  signal  is   accumulated;  -  Spectral
+Express VI wizard  that  allows  you  to carry out
+analysis of the supplied  signal  with the help of
+Fourier transform; -  graphs displaying individual
+All the wizards mentioned  above  work in the same
+After placing on the  diagram  an  Express  Vi , a
+is launched which  displays  one  or  more windows
+allowing  for  the   configuration    of  a  given
+After the  configuration  is  complete,  the  icon
+to a given creator is  changed and at its entrance
+exit different links  appear.  If  it is necessary
+change  the  configuration  of   a  given  wizard,
+on its icon. After you  created an empty VI, place
+While Loop with a button  stopping the loop. Then,
+it, place  the  DAQ  Assistant  function  from the
+tab All Functions?Measurements  I/O?NI  DAQmx. DAQ
+is an automatic wizard  that  allows for quick and
+software configuration so  that  it  uses the card
+desired. After placing  it  on  the  diagram, wait
+the dialog box  appears  in  which  we  choose the
+of operation  and  the  signal  which  we  want to
+We use analog input  and voltage measurement. Then
+dialog  box  will  appear  displaying  a  list  of
+devices measurement and  control  channels and the
+available to these  devices.  We  mark  both given
+input channels we want  to  use  and we finish the
+In response, appears the last  dialog box with the
+name as the  wizard,  in  which  you should select
+parameters  as  sampling    frequency,  number  of
+collected in one run, range  of input values, data
+mode, and more. We  leave  default values if these
+and close the  dialog  box  by  pressing "OK". DAQ
+Assistant changes. It  currently  has  a number of
+and outputs, the most  important  of  which is the
+data. Using the  context  menu  we  to this output
+a graphic indicator (chart)  and  run the program.
+waveforms  should  appear  on  the  graph  signals
+to the card  from  both  generators.  We  stop the
+and modify voltage  range  settings for individual
+the  number  of   collected   points  or  sampling
+then restart the  program.  The  signal we observe
+not stable. If  we  want  it  to  become  so it is
+to  establish  the  so-called  trigger  threshold.
+threshold is the voltage that  must be appear on a
+input channel of  the  card  for data accumulation
+be  performed   (triggered).    Because   the  DAQ
+function in  the  configuration  we  use  does not
+for setting of  the  trigger  threshold,  the data
+by  it    are    accumulated    continuously  thus
+voltage values appear on  both  output channels of
+card. If we  want  the  data  to  be  shown on the
+only when their voltage value 

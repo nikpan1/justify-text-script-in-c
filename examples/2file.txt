@@ -1,0 +1,62 @@
+Application of the NI PCI-6014 acquisition card as the
+measuring tool of a simple virtual oscilloscope
+
+The exercise uses two input channels of the card, ACH0 and ACH8, and the
+DAC0OUT output channel. Two generators should be connected to the input
+channels, an oscilloscope should be connected to the output of the card.
+
+Application of the PCI-6014 card using LabView wizards: Express
+VIs
+
+The goal of this part of the exercise is to create a simple program that allows for:
+collection of data from the two mentioned input channels of the PCI-6014 card,
+setting the excitation threshold for accumulated data, spectral analysis of
+accumulated data, and generation of a selected signal and outputting it through the
+PCI-6014 card. The following LabView elements will be required:
+- While Loop with a button to interrupt its operation, providing continuous
+operation of the program;
+- DAQ Assistant Express VI wizard delivering data accumulated on two card
+input channels;
+- DAQ Assistant Express VI wizard transmitting the generated signal to the
+output of the card;
+- Simulate Signal Express VI wizard that generates one of the five available
+types of signal;
+- Trigger and Gate Express VI wizard that allows you to set the threshold
+excitation, for which the signal is accumulated;
+- Spectral Measurements Express VI wizard that allows you to carry out spectral
+analysis of the supplied signal with the help of fast Fourier transform;
+- graphs displaying individual signals.
+
+All the wizards mentioned above work in the same way. After placing on the diagram
+an Express Vi , a wizard is launched which displays one or more windows dialogs
+allowing for the configuration of a given function. After the configuration is complete,
+the icon corresponding to a given creator is changed and at its entrance and exit
+different links appear. If it is necessary to change the configuration of a given wizard,
+double-click on its icon.
+After you created an empty VI, place the While Loop with a button stopping the loop.
+Then, inside it, place the DAQ Assistant function from the palette tab All
+Functions?Measurements I/O?NI DAQmx. DAQ Assistant is an automatic wizard
+that allows for quick and intuitive software configuration so that it uses the card as
+desired. After placing it on the diagram, wait until the dialog box appears in which we
+choose the type of operation and the signal which we want to measure/generate. We
+use analog input and voltage measurement. Then a dialog box will appear displaying
+a list of available devices measurement and control channels and the channels
+available to these devices. We mark both given above input channels we want to use
+and we finish the wizard. In response, appears the last dialog box with the same
+name as the wizard, in which you should select such parameters as sampling
+frequency, number of samples collected in one run, range of input values, data
+collection mode, and more. We leave default values if these parameters and close
+the dialog box by pressing "OK". DAQ icon Assistant changes. It currently has a
+number of inputs and outputs, the most important of which is the output data. Using
+the context menu we to this output link a graphic indicator (chart) and run the
+program. The waveforms should appear on the graph signals transmitted to the card
+from both generators. We stop the program and modify voltage range settings for
+individual channels, the number of collected points or sampling frequency, then
+restart the program.
+The signal we observe is not stable. If we want it to become so it is necessary
+to establish the so-called trigger threshold. This threshold is the voltage that must be
+appear on a given input channel of the card for data accumulation to be performed
+(triggered). Because the DAQ Assistant function in the configuration we use does not
+allow for setting of the trigger threshold, the data outputted by it are accumulated
+continuously thus successive voltage values appear on both output channels of the
+card. If we want the data to be shown on the chart only when their voltage value
